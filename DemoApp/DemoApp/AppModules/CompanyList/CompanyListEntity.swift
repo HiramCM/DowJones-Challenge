@@ -1,13 +1,13 @@
 //
-//  CompanyModel.swift
+//  CompanyListEntity.swift
 //  DemoApp
 //
-//  Created by Hiram Castro Maldonado on 04/10/21.
+//  Created by Hiram Castro Maldonado on 06/10/21.
 //
 
 import Foundation
 
-struct CompanyModel: Decodable {
+struct CompanyListEntity: Decodable {
     
     let symbol:String?
     let companyName:String?

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class CompanyListViewController: UIViewController {
     
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var CompaniesTableView: UITableView!
@@ -15,11 +15,15 @@ class MainVC: UIViewController {
     @IBOutlet weak var CoverView: UIView!
     @IBOutlet weak var MessageLabel: UILabel!
     
-    private let vm = MainVM(withRepository: ApiService())
+    var presenter:ViewToPresenterProtocol?
+    
+    private var companiesNewsArray:[CompanyListEntity]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        self.navigationController?.navigationBar.isHidden = true
         
         showEmptySearchMessage()
         
@@ -28,19 +32,33 @@ class MainVC: UIViewController {
         CompaniesTableView.dataSource = self
     }
     
-    private func showEmptySearchMessage() {
+}
+
+extension CompanyListViewController: PresenterToViewProtocol {
+    
+    func showCompanies(companiesArray: Array<CompanyListEntity>) {
+        
+        companiesNewsArray?.removeAll()
+        companiesNewsArray = companiesArray
+        
+        DispatchQueue.main.async {
+            self.CompaniesTableView.reloadData()
+        }
+    }
+    
+    func showEmptySearchMessage() {
         DispatchQueue.main.async {
             self.MessageLabel.text = "Type the company name to start searching."
         }
     }
     
-    private func showErrorWithSearchMessage() {
+    func showErrorWithSearchMessage() {
         DispatchQueue.main.async {
             self.MessageLabel.text = "Sorry, we couldn't find data for this search."
         }
     }
     
-    private func showNoInfoView(show:Bool) {
+    func showNoInfoView(show: Bool) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.5, delay: 0.05, animations: {
                 self.CoverView.alpha = show ? 1 : 0
@@ -48,36 +66,12 @@ class MainVC: UIViewController {
         }
     }
     
-    private func getCompanies(withName name:String) {
-        
-        if name.isEmpty {
-            showEmptySearchMessage()
-            showNoInfoView(show: true)
-            return
-        }
-        
-        
-        vm.getCompanies(startingWith: name, completion: { [weak self] error in
-            if error != nil {
-                self?.showErrorWithSearchMessage()
-                self?.showNoInfoView(show: true)
-                return
-            } else {
-                DispatchQueue.main.async {
-                    self?.showNoInfoView(show: false)
-                    self?.CompaniesTableView.reloadData()
-                }
-                return
-            }
-        })
-    }
-    
 }
 
-extension MainVC: UITableViewDataSource {
+extension CompanyListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm.getCompaniesCount()
+        return companiesNewsArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,14 +80,14 @@ extension MainVC: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.bind(with: vm.getCompany(at: indexPath.row))
+        cell.bind(with: companiesNewsArray?[indexPath.row])
         
         return cell
     }
     
 }
 
-extension MainVC: UITableViewDelegate {
+extension CompanyListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
@@ -107,8 +101,8 @@ extension MainVC: UITableViewDelegate {
     }
 }
 
-extension MainVC:UISearchBarDelegate {
+extension CompanyListViewController:UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        getCompanies(withName: searchText)
+        presenter?.startFetchingCompanies(withName: searchText)
     }
 }

@@ -24,7 +24,7 @@ class CompanyCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func bind(with company:CompanyModel?) {
+    func bind(with company:CompanyListEntity?) {
         symbolLabel.text      = company?.symbol      ?? ""
         companyNameLabel.text = company?.companyName ?? ""
         priceChangeLabel.text = company?.priceChange ?? ""
