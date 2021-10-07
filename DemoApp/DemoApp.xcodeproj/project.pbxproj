@@ -23,6 +23,11 @@
 		5CBE51102705F88600DE3610 /* DemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBE510F2705F88600DE3610 /* DemoAppUITests.swift */; };
 		5CBE51122705F88600DE3610 /* DemoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBE51112705F88600DE3610 /* DemoAppUITestsLaunchTests.swift */; };
 		5CD1B8A7270B6437002C6F54 /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD1B8A6270B6437002C6F54 /* CompanyCell.swift */; };
+		5CD2CE8C270F4BCB00786F61 /* JsonDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD2CE8B270F4BCB00786F61 /* JsonDataManager.swift */; };
+		5CD2CE8D270F64E700786F61 /* MockDataA.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CD2CE87270F49A100786F61 /* MockDataA.json */; };
+		5CD2CE8E270F64E700786F61 /* MockDataB.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CD2CE89270F4A0300786F61 /* MockDataB.json */; };
+		5CD2CE8F270F64F200786F61 /* MockDataA.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CD2CE87270F49A100786F61 /* MockDataA.json */; };
+		5CD2CE90270F64F700786F61 /* MockDataB.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CD2CE89270F4A0300786F61 /* MockDataB.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +68,9 @@
 		5CBE510F2705F88600DE3610 /* DemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITests.swift; sourceTree = "<group>"; };
 		5CBE51112705F88600DE3610 /* DemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5CD1B8A6270B6437002C6F54 /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
+		5CD2CE87270F49A100786F61 /* MockDataA.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockDataA.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		5CD2CE89270F4A0300786F61 /* MockDataB.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockDataB.json; sourceTree = "<group>"; };
+		5CD2CE8B270F4BCB00786F61 /* JsonDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +175,7 @@
 		5CBE50ED2705F88400DE3610 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				5CD2CE8A270F4BB000786F61 /* Utils */,
 				5C39F03C270EA75D00330F63 /* CommonUtils */,
 				5CD1B8AA270BB828002C6F54 /* Application */,
 				5CD1B8B0270BB949002C6F54 /* Resources */,
@@ -204,6 +213,8 @@
 		5CD1B8B0270BB949002C6F54 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5CD2CE87270F49A100786F61 /* MockDataA.json */,
+				5CD2CE89270F4A0300786F61 /* MockDataB.json */,
 				5CBE50FC2705F88600DE3610 /* Info.plist */,
 				5CBE50F72705F88600DE3610 /* Assets.xcassets */,
 				5CBE50F92705F88600DE3610 /* LaunchScreen.storyboard */,
@@ -226,6 +237,14 @@
 				5CD1B8A6270B6437002C6F54 /* CompanyCell.swift */,
 			);
 			path = CompanyCell;
+			sourceTree = "<group>";
+		};
+		5CD2CE8A270F4BB000786F61 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5CD2CE8B270F4BCB00786F61 /* JsonDataManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +351,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CD2CE8D270F64E700786F61 /* MockDataA.json in Resources */,
+				5CD2CE8E270F64E700786F61 /* MockDataB.json in Resources */,
 				5CBE50FB2705F88600DE3610 /* LaunchScreen.storyboard in Resources */,
 				5CBE50F82705F88600DE3610 /* Assets.xcassets in Resources */,
 				5CBE50F62705F88400DE3610 /* Main.storyboard in Resources */,
@@ -342,6 +363,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CD2CE90270F64F700786F61 /* MockDataB.json in Resources */,
+				5CD2CE8F270F64F200786F61 /* MockDataA.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +385,7 @@
 				5C39F035270E493400330F63 /* CompanyListRouter.swift in Sources */,
 				5C39F033270E491F00330F63 /* CompanyListEntity.swift in Sources */,
 				5C39F02F270E48E800330F63 /* CompanyListInteractor.swift in Sources */,
+				5CD2CE8C270F4BCB00786F61 /* JsonDataManager.swift in Sources */,
 				5C39F031270E48F600330F63 /* CompanyListPresenter.swift in Sources */,
 				5CBE50F32705F88400DE3610 /* CompanyListView.swift in Sources */,
 				5CD1B8A7270B6437002C6F54 /* CompanyCell.swift in Sources */,
@@ -548,6 +572,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = KL9MCQY657;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DemoApp/Resources/Info.plist;
@@ -577,6 +602,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = KL9MCQY657;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DemoApp/Resources/Info.plist;

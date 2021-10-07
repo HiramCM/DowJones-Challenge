@@ -24,8 +24,6 @@ protocol ViewToPresenterProtocol {
     var interactor: PresenterToInteractorProtocol? {get set}
     var router: PresenterToRouterProtocol? {get set}
     func startFetchingCompanies(withName name:String)
-    func getTotalItems() -> Int
-    func getItem(atRow row:Int) -> CompanyListEntity?
 }
 
 protocol PresenterToViewProtocol {
@@ -43,8 +41,6 @@ protocol PresenterToRouterProtocol {
 protocol PresenterToInteractorProtocol {
     var presenter:InteractorToPresenterProtocol? {get set}
     func fetchCompanies(withName name:String)
-    func getTotalItems() -> Int
-    func getItem(atRow row:Int) -> CompanyListEntity?
 }
 
 protocol InteractorToPresenterProtocol {

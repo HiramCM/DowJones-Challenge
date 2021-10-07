@@ -32,12 +32,4 @@ class CompanyListInteractor: PresenterToInteractorProtocol {
         }.resume()
     }
     
-    func getTotalItems() -> Int {
-        return companiesNewsArray?.count ?? 0
-    }
-    
-    func getItem(atRow row: Int) -> CompanyListEntity? {
-        return companiesNewsArray?[row] ?? nil
-    }
-    
 }

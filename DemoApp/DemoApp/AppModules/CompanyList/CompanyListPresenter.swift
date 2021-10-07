@@ -17,14 +17,6 @@ class CompanyListPresenter: ViewToPresenterProtocol {
         interactor?.fetchCompanies(withName: name)
     }
     
-    func getTotalItems() -> Int {
-        return interactor?.getTotalItems() ?? 0
-    }
-    
-    func getItem(atRow row: Int) -> CompanyListEntity? {
-        return interactor?.getItem(atRow: row)
-    }
-    
 }
 
 extension CompanyListPresenter: InteractorToPresenterProtocol {
