@@ -20,7 +20,9 @@ This Architecture is based on Single Resposability Principle which leads to a cl
   - Native and simple implementation to fetch data from server to parse it into decodable objects
 - Dependency Inversion
   - To inject / assign protocols instead of passing a strong reference through classes
+- Unit Test
 
 ## Project Structure
 
-<img width="238" alt="Screen Shot 2021-10-06 at 11 14 36 p m" src="https://user-images.githubusercontent.com/91649588/136329617-3ee293cf-5c38-477c-a6df-9bc6ab2e3d60.png">
+<img width="245" alt="Screen Shot 2021-10-07 at 10 49 27 a m" src="https://user-images.githubusercontent.com/91649588/136437225-4627f2d4-32fc-48da-8344-4c098135ba77.png">
+
